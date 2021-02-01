@@ -9,7 +9,7 @@ url_list = ['https://finance.yahoo.com/quote/GME',
             'https://finance.yahoo.com/quote/BB',
             'https://finance.yahoo.com/quote/NOK']
 
-name_list = ['GME','AMC','BB','NOK']
+name_list = ['GME','AMC','BB_','NOK']
 
 NUM_STONKS = 4
 
@@ -33,6 +33,7 @@ while(True):
         price_list.append(make_soup(request))
 
     os.system('cls' if os.name == 'nt' else 'clear')
+
     print("==============================")
     for x in range(NUM_STONKS):
         print(name_list[x] + " price: " + price_list[x])
