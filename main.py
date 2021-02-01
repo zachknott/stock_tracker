@@ -3,7 +3,7 @@ import os
 import requests
 import bs4
 from bs4 import BeautifulSoup
-from requests_own import get_request
+from requests_own import request_head
 from requests_own import make_url
 
 
@@ -20,11 +20,11 @@ if __name__ == "__main__":
 
     # Warning
     STOCK_NUM = 0
-    PRICE = 245
-    
+    MAX_PRICE = 318
+    MIN_PRICE = 200
 
     # Setup runs once
-    url_list2 = make_url(NUM_STONKS,SYMBOL_LIST)
+    url_list = make_url(NUM_STONKS,SYMBOL_LIST)
 
     # LOOP to run
     while(True):
@@ -34,16 +34,19 @@ if __name__ == "__main__":
         price_list = []
 
         for x in range(NUM_STONKS):
-            requests_list.append(requests.get(url_list2[x]))
-            price_list.append(get_request(requests_list[x]))
+            requests_list.append(requests.get(url_list[x]))
 
+        for x in range(NUM_STONKS):
+            price_list.append(request_head(requests_list[x]))
+            
+        t.sleep(3)
         os.system('cls' if os.name == 'nt' else 'clear')            # Clears the terminal
         print("==============================")
 
         for x in range(NUM_STONKS):
             print(SYMBOL_LIST[x] + " price: " + price_list[x])
 
-            if float(price_list[STOCK_NUM]) > PRICE:
+            if float(price_list[STOCK_NUM]) > MAX_PRICE or float(price_list[STOCK_NUM]) < MIN_PRICE:
                 print("\a")
     
         print("Time: " + t.asctime())
