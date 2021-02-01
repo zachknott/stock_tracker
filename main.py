@@ -22,11 +22,12 @@ while(True):
     print1 = "GME price: " + gme
     print2 = "AMC price: " + amc
     
-    os.system('cls' if os.name == 'nt' else 'clear')
+    
+    #os.system('cls' if os.name == 'nt' else 'clear')
     print(print1)
     print(print2)
-    print("Updated at: " + t.asctime())
-    
+    print("Time: " + t.asctime())
+    print("=================================")
     archive1 = gme
     archive2 = amc
     t.sleep(3)
