@@ -13,7 +13,7 @@ name_list = ['GME','AMC','BB_','NOK']
 
 # How many STONKS do you want to iterate through
 NUM_STONKS = 2
-REFRESH_TIME_SECONDS = 5
+REFRESH_TIME_SECONDS = 1
 
 def make_soup(name):
     soup = bs4.BeautifulSoup(name.text, features="html.parser")
@@ -41,7 +41,12 @@ while(True):
 
     time_after = t.localtime().tm_sec
 
-    t.sleep(REFRESH_TIME_SECONDS -( time_after - time_before))
+    refresh_time = REFRESH_TIME_SECONDS - (time_after - time_before)
+    
+    if refresh_time < 0:
+        refresh_time = 0
+
+    t.sleep(refresh_time)
     
 
 
