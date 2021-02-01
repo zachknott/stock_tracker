@@ -4,6 +4,15 @@ from bs4 import BeautifulSoup
 import time as t
 import os
 
+url_list = ['https://finance.yahoo.com/quote/GME',
+            'https://finance.yahoo.com/quote/AMC',
+            'https://finance.yahoo.com/quote/BB',
+            'https://finance.yahoo.com/quote/NOK']
+
+name_list = ['GME','AMC','BB','NOK']
+
+NUM_STONKS = 4
+
 def make_soup(name):
     soup = bs4.BeautifulSoup(name.text, features="html.parser")
     price = soup.find_all("div", {'class': 'D(ib) Mend(20px)'})[0].find('span').text
@@ -13,26 +22,21 @@ archive1 = 0
 archive2 = 0
 
 while(True):
+    requests_list = []
     
-    url_1 = requests.get('https://finance.yahoo.com/quote/GME')
-    url_2 = requests.get('https://finance.yahoo.com/quote/AMC')
-    url_3 = requests.get('https://finance.yahoo.com/quote/BB')
+    for url in url_list:
+        requests_list.append(requests.get(url))
+    
+    price_list = []
 
-    gme = (make_soup(url_1))
-    amc = (make_soup(url_2))
-    bb =  (make_soup(url_3))
+    for request in requests_list:
+        price_list.append(make_soup(request))
 
-    print1 = "GME price: " + gme
-    print2 = "AMC price: " + amc
-    print3 = "BB price: " + bb
-    
-    
     os.system('cls' if os.name == 'nt' else 'clear')
-
     print("==============================")
-    print(print1)
-    print(print2)
-    print(print3)
+    for x in range(NUM_STONKS):
+        print(name_list[x] + " price: " + price_list[x])
+    
     print("Time: " + t.asctime())
     print("==============================")
 
