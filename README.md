@@ -1,2 +1,3 @@
 # stock_tracker
-# STONK TRACKER FOR GME, AMC, BB, and NOK
+# STONK TRACKER FOR ANY SUMBOL
+

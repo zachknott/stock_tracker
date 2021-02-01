@@ -6,14 +6,22 @@ from bs4 import BeautifulSoup
 from requests_own import get_request
 from requests_own import make_url
 
+
+
+
 if __name__ == "__main__":
 
-    #Add Symbols to the stock tracker
+    # Add Symbols to the stock tracker
     SYMBOL_LIST = ['GME','AMC','BB','NOK','VTI',"VOO"]
     # How many symbols do you want to iterate through
     NUM_STONKS = 2
     # what refresh time in seconds
-    REFRESH_TIME_SECONDS = 60
+    REFRESH_TIME_SECONDS = 5
+
+    # Warning
+    STOCK_NUM = 0
+    PRICE = 245
+    
 
     # Setup runs once
     url_list2 = make_url(NUM_STONKS,SYMBOL_LIST)
@@ -34,6 +42,9 @@ if __name__ == "__main__":
 
         for x in range(NUM_STONKS):
             print(SYMBOL_LIST[x] + " price: " + price_list[x])
+
+            if float(price_list[STOCK_NUM]) > PRICE:
+                print("\a")
     
         print("Time: " + t.asctime())
         print("==============================")
