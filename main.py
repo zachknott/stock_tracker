@@ -18,9 +18,6 @@ def make_soup(name):
     price = soup.find_all("div", {'class': 'D(ib) Mend(20px)'})[0].find('span').text
     return price
 
-archive1 = 0
-archive2 = 0
-
 while(True):
     requests_list = []
     
