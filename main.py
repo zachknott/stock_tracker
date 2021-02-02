@@ -22,6 +22,7 @@ STOCK_NUM = 0
 MAX_PRICE = 300
 MIN_PRICE = 150
 
+
 def main():
     time_before = t.localtime().tm_sec
 
@@ -36,7 +37,7 @@ def main():
         
     os.system('cls' if os.name == 'nt' else 'clear')            # Clears the terminal
     print("==============================")
-
+    
     for x in range(NUM_STONKS):
         print(SYMBOL_LIST[x] + " price: " + price_list[x])
 
@@ -57,6 +58,7 @@ def main():
         refresh_time = 0
 
     t.sleep(refresh_time)
+
 
 if __name__ == "__main__":
     # LOOP to run
