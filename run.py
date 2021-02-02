@@ -8,7 +8,7 @@ def run_main():
     except:
         os.system('cls' if os.name == 'nt' else 'clear') 
         print("Main crashed, restarting")
-        t.sleep(5)
+        t.sleep(1)
         os.system('cls' if os.name == 'nt' else 'clear') 
 
 while(True):
