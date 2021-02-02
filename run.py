@@ -12,11 +12,5 @@ def run_main():
         os.system('cls' if os.name == 'nt' else 'clear') 
 
 while(True):
-    try:
-        run_main()
-    except:
-        os.system('cls' if os.name == 'nt' else 'clear') 
-        print("Run Main Crashed, restarting")
-        t.sleep(1)
-        os.system('cls' if os.name == 'nt' else 'clear')
+    run_main()
     
